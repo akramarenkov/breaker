@@ -18,7 +18,7 @@ package main
 import (
     "fmt"
 
-    "github.com/akramarenkov/breaker/breaker"
+    "github.com/akramarenkov/breaker"
 )
 
 func main() {
