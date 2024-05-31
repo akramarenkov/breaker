@@ -3,7 +3,7 @@ package breaker_test
 import (
 	"fmt"
 
-	"github.com/akramarenkov/breaker/breaker"
+	"github.com/akramarenkov/breaker"
 )
 
 func ExampleBreaker() {
