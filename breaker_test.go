@@ -28,6 +28,8 @@ func testBreaker(t *testing.T, adds ...func()) {
 	default:
 	}
 
+	require.False(t, breaker.IsStopped())
+
 	go func() {
 		defer breaker.Complete()
 
@@ -42,6 +44,8 @@ func testBreaker(t *testing.T, adds ...func()) {
 		require.FailNow(t, "must be breaked")
 	}
 
+	require.True(t, breaker.IsStopped())
+
 	breaker.Break(adds...)
 
 	select {
@@ -49,4 +53,6 @@ func testBreaker(t *testing.T, adds ...func()) {
 	default:
 		require.FailNow(t, "must be breaked")
 	}
+
+	require.True(t, breaker.IsStopped())
 }
