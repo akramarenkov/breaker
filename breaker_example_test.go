@@ -20,7 +20,6 @@ func ExampleBreaker() {
 	breaker.Break()
 
 	fmt.Println(breaker.IsStopped())
-
 	// Output:
 	// false
 	// true

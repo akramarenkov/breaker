@@ -35,7 +35,6 @@ func main() {
     breaker.Break()
 
     fmt.Println(breaker.IsStopped())
-
     // Output:
     // false
     // true

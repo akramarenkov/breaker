@@ -16,7 +16,6 @@ func ExampleClosing() {
 	_, opened := <-closing.IsClosed()
 
 	fmt.Println(opened)
-
 	// Output:
 	// false
 }
