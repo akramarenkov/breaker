@@ -6,7 +6,7 @@
 
 ## Purpose
 
-Library that allows you to break goroutine and wait it completion
+Library that provides to break goroutine and wait it completion
 
 ## Usage
 
