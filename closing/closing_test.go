@@ -50,7 +50,7 @@ func BenchmarkClosed(b *testing.B) {
 
 	closing.Close()
 
-	for run := 0; run < b.N; run++ {
+	for range b.N {
 		<-closing.IsClosed()
 	}
 }
@@ -58,7 +58,7 @@ func BenchmarkClosed(b *testing.B) {
 func BenchmarkUnclosed(b *testing.B) {
 	closing := New()
 
-	for run := 0; run < b.N; run++ {
+	for range b.N {
 		select {
 		case <-closing.IsClosed():
 		default:
@@ -69,7 +69,7 @@ func BenchmarkUnclosed(b *testing.B) {
 func BenchmarkRace(b *testing.B) {
 	closing := New()
 
-	for run := 0; run < b.N; run++ {
+	for range b.N {
 		b.RunParallel(
 			func(pb *testing.PB) {
 				for pb.Next() {
@@ -89,7 +89,7 @@ func BenchmarkRaceAdd(b *testing.B) {
 		counter++
 	}
 
-	for run := 0; run < b.N; run++ {
+	for range b.N {
 		b.RunParallel(
 			func(pb *testing.PB) {
 				for pb.Next() {
