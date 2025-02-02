@@ -7,19 +7,19 @@ import (
 )
 
 func ExampleBreaker() {
-	breaker := breaker.New()
+	brk := breaker.New()
 
 	go func() {
-		defer breaker.Complete()
+		defer brk.Complete()
 
-		_, opened := <-breaker.IsBreaked()
+		_, opened := <-brk.IsBreaked()
 
 		fmt.Println(opened)
 	}()
 
-	breaker.Break()
+	brk.Break()
 
-	fmt.Println(breaker.IsStopped())
+	fmt.Println(brk.IsStopped())
 	// Output:
 	// false
 	// true

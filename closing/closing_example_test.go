@@ -7,13 +7,13 @@ import (
 )
 
 func ExampleClosing() {
-	closing := closing.New()
+	clg := closing.New()
 
 	go func() {
-		closing.Close()
+		clg.Close()
 	}()
 
-	_, opened := <-closing.IsClosed()
+	_, opened := <-clg.IsClosed()
 
 	fmt.Println(opened)
 	// Output:
