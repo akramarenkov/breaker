@@ -19,8 +19,6 @@ jobs:
       - run: |
           for dir in . v[0-9]*;
           do
-            cd 'v[0-9]*'
-
             test "${dir}" == 'v[0-9]*' && continue
 
             cd "${dir}"
