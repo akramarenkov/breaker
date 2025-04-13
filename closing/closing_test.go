@@ -69,15 +69,13 @@ func BenchmarkUnclosed(b *testing.B) {
 func BenchmarkRace(b *testing.B) {
 	closing := New()
 
-	for range b.N {
-		b.RunParallel(
-			func(pb *testing.PB) {
-				for pb.Next() {
-					closing.Close()
-				}
-			},
-		)
-	}
+	b.RunParallel(
+		func(pb *testing.PB) {
+			for pb.Next() {
+				closing.Close()
+			}
+		},
+	)
 }
 
 func BenchmarkRaceAdd(b *testing.B) {
@@ -89,13 +87,11 @@ func BenchmarkRaceAdd(b *testing.B) {
 		counter++
 	}
 
-	for range b.N {
-		b.RunParallel(
-			func(pb *testing.PB) {
-				for pb.Next() {
-					closing.Close(add, nil)
-				}
-			},
-		)
-	}
+	b.RunParallel(
+		func(pb *testing.PB) {
+			for pb.Next() {
+				closing.Close(add, nil)
+			}
+		},
+	)
 }
